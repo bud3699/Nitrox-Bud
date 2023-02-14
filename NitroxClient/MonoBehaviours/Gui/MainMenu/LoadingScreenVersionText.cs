@@ -1,4 +1,5 @@
-﻿using NitroxModel.Helper;
+using NitroxClient.GameLogic.Settings;
+using NitroxModel.Helper;
 using TMPro;
 using UnityEngine;
 using UnityEngine.XR;
@@ -36,6 +37,14 @@ public static class LoadingScreenVersionText
     public static void DisableWarningText()
     {
         loadingScreenWarning.FadeOut(1f, null);
+        if (NitroxPrefs.HideVersion.Value)
+        {
+            versionText.FadeOut(1f, null);
+        }
+        if (!NitroxPrefs.HideVersion.Value)
+        {
+            versionText.FadeIn(1f, null);
+        }
         if (XRSettings.enabled)
         {
             versionText.FadeOut(1f, null);

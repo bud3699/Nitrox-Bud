@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using Autofac;
 using NitroxClient.MonoBehaviours.Gui.MainMenu;
 using UnityEngine.Events;
 
@@ -18,11 +19,20 @@ namespace NitroxClient.GameLogic.Settings
 
         // This is where you should add new settings, there are 3 types of available:
         // TOGGLE (bool type), SLIDER (float type), LIST (int type)
+        
         private void MakeSettings()
         {
             // Examples:
             // AddSetting("Subtitles", new Setting("Test Slidder", NitroxPrefs.SliderPref, newValue => NitroxPrefs.SliderPref.Value = newValue, 0.1f, 1f, 0.4f));
             // AddSetting("Advanced", new Setting("Test list", NitroxPrefs.ListPref, newIndex => NitroxPrefs.ListPref.Value = newIndex, new string[] { "option 1", "option 2", "option 3" }));
+            AddSetting("Nitrox_NitroxSettings", new Setting("Nitrox_HideVersion", NitroxPrefs.HideVersion, remove => 
+            { 
+                NitroxPrefs.HideVersion.Value = remove;
+                LoadingScreenVersionText.Initialize();
+                MainMenuMultiplayerPanel.Main.RefreshServerEntries();
+
+
+            }));
             AddSetting("Nitrox_StreamerSettings", new Setting("Nitrox_SilenceChat", NitroxPrefs.SilenceChat, silence => NitroxPrefs.SilenceChat.Value = silence));
             AddSetting("Nitrox_StreamerSettings", new Setting("Nitrox_HideIp", NitroxPrefs.HideIp, hide =>
             {
@@ -93,6 +103,7 @@ namespace NitroxClient.GameLogic.Settings
             {
                 return ((NitroxPref<T>)NitroxPref).Value;
             }
+
         }
 
         public enum SettingType

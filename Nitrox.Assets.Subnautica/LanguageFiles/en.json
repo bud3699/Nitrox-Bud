@@ -67,5 +67,8 @@
     "Nitrox_WorldSettling": "Awaiting World Settling…",
     "Nitrox_RemotePlayerObstacle": "Another player's either inside or too close to the deconstructable target.",
     "Nitrox_PlayerJoined": "{PLAYER} joined the game.",
-    "Nitrox_PlayerLeft": "{PLAYER} left the game."
+    "Nitrox_PlayerLeft": "{PLAYER} left the game.",
+    "Nitrox_HideVersion": "Hide Version text",
+    "Nitrox_NitroxSettings": "Nitrox Settings"
+
 }
